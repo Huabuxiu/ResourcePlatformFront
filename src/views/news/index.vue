@@ -10,41 +10,32 @@
     >
       <el-table-column align="center" label="ID" width="95">
         <template slot-scope="scope">
-          {{ scope.row.did }}
+          {{ scope.row.nid }}
         </template>
       </el-table-column>
-
-      <el-table-column label="部门" width="110" >
+      <el-table-column label="Title">
         <template slot-scope="scope">
-          {{ scope.row.name }}
+          {{ scope.row.title }}
         </template>
       </el-table-column>
-
-      <el-table-column label="介绍"  align="center">
+      <el-table-column label="发布时间" width="110" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.introduce }}</span>
+          <span>{{ scope.row.regTime }}</span>
         </template>
       </el-table-column>
-
-      <el-table-column label="创立时间" width="200" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.regTime }}
-        </template>
-      </el-table-column>
-
-      <el-table-column class-name="status-col" label="操作" width="200" align="center">
-        <template slot-scope="scope">
-          <el-button type="primary" @click="onUpdate">修改</el-button>
-          <el-button type="primary" @click="onDelete">删除</el-button>
-        </template>
-      </el-table-column>
+        <el-table-column class-name="status-col" label="操作" width="200" align="center">
+          <template slot-scope="scope">
+            <el-button type="primary" @click="onUpdate">修改</el-button>
+            <el-button type="primary" @click="onDelete">删除</el-button>
+          </template>
+        </el-table-column>
 
     </el-table>
   </div>
 </template>
 
 <script>
-import { getList } from '@/api/table'
+import { getList } from '@/api/news'
 
 export default {
   filters: {
@@ -67,12 +58,6 @@ export default {
     this.fetchData()
   },
   methods: {
-    onUpdate(){
-
-    },
-    onDelete(){
-
-    },
     fetchData() {
       this.listLoading = true
       getList().then(response => {

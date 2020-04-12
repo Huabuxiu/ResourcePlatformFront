@@ -10,23 +10,21 @@
     >
       <el-table-column align="center" label="ID" width="95">
         <template slot-scope="scope">
-          {{ scope.row.did }}
+          {{ scope.row.id }}
         </template>
       </el-table-column>
-
-      <el-table-column label="部门" width="110" >
+      <el-table-column label="信息" >
         <template slot-scope="scope">
-          {{ scope.row.name }}
+          {{ scope.row.name}}
+          {{scope.row.eMail}}
         </template>
       </el-table-column>
-
-      <el-table-column label="介绍"  align="center">
+      <el-table-column label="部门" width="300" align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.introduce }}</span>
+          <span>{{ scope.row.department }}</span>
         </template>
       </el-table-column>
-
-      <el-table-column label="创立时间" width="200" align="center">
+      <el-table-column label="注册时间" width="300" align="center">
         <template slot-scope="scope">
           {{ scope.row.regTime }}
         </template>
@@ -34,17 +32,16 @@
 
       <el-table-column class-name="status-col" label="操作" width="200" align="center">
         <template slot-scope="scope">
-          <el-button type="primary" @click="onUpdate">修改</el-button>
-          <el-button type="primary" @click="onDelete">删除</el-button>
+          <el-button type="primary" @click="onPass">通过</el-button>
+          <el-button type="primary" @click="OnRefuse">拒绝</el-button>
         </template>
       </el-table-column>
-
     </el-table>
   </div>
 </template>
 
 <script>
-import { getList } from '@/api/table'
+import { getexamine_list } from '@/api/user'
 
 export default {
   filters: {
@@ -67,15 +64,9 @@ export default {
     this.fetchData()
   },
   methods: {
-    onUpdate(){
-
-    },
-    onDelete(){
-
-    },
     fetchData() {
       this.listLoading = true
-      getList().then(response => {
+      getexamine_list().then(response => {
         this.list = response.data
         this.listLoading = false
       })

@@ -51,31 +51,68 @@ export const constantRoutes = [
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: '后台管理系统', icon: 'dashboard' }
     }]
   },
 
   {
     path: '/example',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'example' },
     children: [
       {
         path: 'table',
         name: 'Table',
         component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        meta: { title: '部门管理', icon: 'table' }
       },
+    ]
+  },
+
+  {
+    path: '/host_information',
+    component: Layout,
+    children: [
       {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        path: 'index',
+        name: 'Form',
+        component: () => import('@/views/host_information/index'),
+        meta: { title: '主机信息', icon: 'form' }
       }
     ]
   },
+  {
+    path: '/resource_type',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Resource',
+        component: () => import('@/views/resource_type/index'),
+        meta: { title: '资源类型', icon: 'table' }
+      }
+    ]
+  },
+
+  {
+    path: '/user',
+    component: Layout,
+    meta: { title: '人员管理', icon: 'table' },
+    children: [
+      {
+        path: 'index',
+        name: 'list',
+        component: () => import('@/views/user/index'),
+        meta: { title: '人员列表', icon: 'table' }
+      },
+      {
+        path: 'examine_list',
+        name: 'examine_list',
+        component: () => import('@/views/user/list'),
+        meta: { title: '人员审核', icon: 'table' }
+      }
+    ]
+  },
+
 
   {
     path: '/form',
@@ -86,6 +123,29 @@ export const constantRoutes = [
         name: 'Form',
         component: () => import('@/views/form/index'),
         meta: { title: 'Form', icon: 'form' }
+      }
+    ]
+  },
+
+  {
+    path: '/Rich_text',
+    component: Layout,
+    meta: {
+      title: '文章管理',
+      icon: 'nested'
+    },
+    children: [
+      {
+        path: 'index',
+        name: 'richtext',
+        component: () => import('@/components/Tinymce/index'),
+        meta: { title: '发布文章', icon: 'form' }
+      },
+      {
+        path: 'list',
+        name: 'List',
+        component: () => import('@/views/news/index'),
+        meta: { title: '文章列表', icon: 'table' }
       }
     ]
   },
@@ -157,6 +217,12 @@ export const constantRoutes = [
         meta: { title: 'External Link', icon: 'link' }
       }
     ]
+  },
+
+  {
+    path: '/chat',
+    component: () => import('@/views/chat/index'),
+    hidden: true
   },
 
   // 404 page must be placed at the end !!!

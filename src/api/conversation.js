@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function getList(data) {
   return request({
-    url: 'department/list',
+    url: 'conversation/history',
     method: 'post',
     data
   })
